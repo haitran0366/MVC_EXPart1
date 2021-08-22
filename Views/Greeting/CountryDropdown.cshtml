@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model MVC_EXPart1.Models.CountryViewModel
+@{
+    ViewData["Title"] = "Country Greeting";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Country Dropdown</h1>
+    @*<h1>@ViewData["CountryID"]</h1>*@
+    <form asp-action="CountryDropdown" asp-controller="Greeting" method="post">
+        <h1></h1>
+        <div class="row">
+            <div class="col-md-4">
+                <select id="drpCountryList" class="form-control" asp-for="countryID" asp-items="@(new SelectList(Model.countryList, "countryID", "countryName"))">
+                    <option selected>Select a country</option>
+                </select>
+                <input type="hidden" asp-for="countryID" />
+            </div>
+            <div class="col-md-2">
+                <input type="submit" name="btnSubmit" value="Submit" class="btn btn-success" />
+            </div>
+        </div>
+        <h1><label>Greeting:</label>  @ViewBag.greeting</h1>
+
+    </form>
+</div>
